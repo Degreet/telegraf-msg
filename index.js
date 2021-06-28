@@ -4,7 +4,9 @@ module.exports = {
 	},
 
 	sendTo(ctx, userId, msg, extra) {
-		return ctx.telegram.sendMessage(userId, msg, extra).catch(() => {})
+		return ctx.telegram
+			.sendMessage(userId, msg, { parse_mode: 'html', ...extra })
+			.catch(() => {})
 	},
 
 	edit(ctx, msg, extra) {
